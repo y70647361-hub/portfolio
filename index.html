@@ -1,0 +1,1093 @@
+<!doctype html>
+<html lang="zh-CN" data-lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>宋源源作品集 · Yuanyuan's Art Profile</title>
+<meta name="description" content="宋源源作品集：视频导演、Live2D、AI 短片、游戏文案、插画与 3D 建模。Song Yuanyuan's art profile — video, Live2D, AI film, game writing, illustration and 3D.">
+<meta name="theme-color" content="#0c0c0f">
+<meta property="og:title" content="宋源源作品集 · Yuanyuan's Art Profile">
+<meta property="og:description" content="视频 · Live2D · AI 短片 · 游戏文案 · 插画 · 3D 建模">
+<meta property="og:image" content="https://y70647361-hub.github.io/portfolio/media/img/illustration-2-sm.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230c0c0f'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23d8b878' font-family='serif'%3E源%3C/text%3E%3C/svg%3E">
+<style>
+:root {
+  --bg: #0c0c0f;
+  --bg-2: #121217;
+  --card: #17171d;
+  --card-2: #1d1d24;
+  --line: rgba(255, 255, 255, .08);
+  --line-2: rgba(255, 255, 255, .16);
+  --text: #eeeae2;
+  --muted: #a7a29a;
+  --dim: #75716b;
+  --gold: #d8b878;
+  --gold-2: #f1dcae;
+  --serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", "SimSun", Georgia, "Times New Roman", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "Segoe UI", Roboto, sans-serif;
+  --r: 14px;
+  --head: 104px;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+@media (min-width: 900px) { :root { --head: 64px; } }
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html.locked { overflow: hidden; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 15px/1.7 var(--sans); letter-spacing: .01em;
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+img, video { display: block; max-width: 100%; }
+button { font: inherit; color: inherit; }
+a { color: inherit; }
+::selection { background: var(--gold); color: #111; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+html[data-lang="zh"] .en, html[data-lang="en"] .zh { display: none !important; }
+
+.wrap { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+@media (min-width: 700px) { .wrap { padding: 0 32px; } }
+
+/* ---------- header ---------- */
+.head {
+  position: fixed; inset: 0 0 auto; z-index: 50;
+  transition: background .4s, border-color .4s, backdrop-filter .4s;
+  border-bottom: 1px solid transparent;
+}
+.head.solid {
+  background: rgba(12, 12, 15, .82); border-color: var(--line);
+  -webkit-backdrop-filter: blur(14px) saturate(140%); backdrop-filter: blur(14px) saturate(140%);
+}
+.head-in { display: flex; flex-wrap: wrap; align-items: center; gap: 0 24px; min-height: 56px; }
+.brand { display: flex; align-items: baseline; gap: 10px; text-decoration: none; margin-right: auto; padding: 14px 0; }
+.brand b { font: 600 18px/1 var(--serif); letter-spacing: .08em; }
+.brand small { color: var(--muted); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+.chapters {
+  order: 3; width: 100%; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none;
+  padding: 0 0 10px; margin: 0 -4px;
+}
+.chapters::-webkit-scrollbar { display: none; }
+.chapters a {
+  flex: none; text-decoration: none; font-size: 13px; color: var(--muted);
+  padding: 6px 12px; border-radius: 99px; border: 1px solid var(--line);
+  transition: color .25s, border-color .25s, background .25s; white-space: nowrap;
+}
+.chapters a i { font-style: normal; color: var(--dim); margin-right: 6px; font-size: 11px; }
+.chapters a:hover { color: var(--text); border-color: var(--line-2); }
+.chapters a.on { color: #141210; background: var(--gold); border-color: var(--gold); }
+.chapters a.on i { color: rgba(0, 0, 0, .5); }
+@media (min-width: 900px) {
+  .chapters { order: 0; width: auto; padding: 0; margin: 0; }
+}
+.lang {
+  display: inline-flex; border: 1px solid var(--line-2); border-radius: 99px; padding: 3px;
+  background: rgba(0, 0, 0, .25);
+}
+.lang button {
+  border: 0; background: none; cursor: pointer; font-size: 12px; letter-spacing: .06em;
+  padding: 4px 11px; border-radius: 99px; color: var(--muted); transition: background .25s, color .25s;
+}
+.lang button[aria-pressed="true"] { background: var(--text); color: #111; }
+
+/* ---------- hero ---------- */
+.hero { position: relative; height: 100vh; height: 100svh; min-height: 580px; overflow: hidden; isolation: isolate; }
+.hero-bg { position: absolute; inset: -4%; z-index: -2; will-change: transform; }
+.hero-slide {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50%) 50%;
+  opacity: 0; transition: opacity 1.8s ease; transform: scale(1.04);
+}
+@media (max-width: 699px) {
+  /* portrait screens: keep more of the 16:9 artwork visible above the title */
+  .hero-bg { inset: 0 -4% auto; height: 72%; -webkit-mask-image: linear-gradient(#000 62%, transparent); mask-image: linear-gradient(#000 62%, transparent); }
+}
+.hero-slide.on, .hero-slide.was { animation: kenburns 9s ease-out forwards; }
+.hero-slide.on { opacity: 1; }
+@keyframes kenburns { from { transform: scale(1.04) translate(0, 0); } to { transform: scale(1.14) translate(-1.5%, -1%); } }
+.hero::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(12,12,15,.55) 0%, rgba(12,12,15,.05) 30%, rgba(12,12,15,.35) 60%, var(--bg) 100%),
+    radial-gradient(120% 80% at 0% 100%, rgba(12,12,15,.85), transparent 60%);
+}
+.hero-in { position: absolute; inset: auto 0 0; padding-bottom: clamp(40px, 9vh, 96px); will-change: transform, opacity; }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px; margin: 0 0 18px;
+  font-size: 12px; letter-spacing: .32em; text-transform: uppercase; color: var(--gold-2);
+}
+.eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
+.hero h1 {
+  margin: 0; font: 600 clamp(40px, 8.4vw, 104px)/1.02 var(--serif); letter-spacing: -.01em;
+  text-shadow: 0 2px 30px rgba(0, 0, 0, .35);
+}
+.hero h1 .cn { display: block; font-size: .42em; letter-spacing: .28em; margin-top: .45em; color: var(--gold-2); font-weight: 500; }
+.roles { margin: 22px 0 0; max-width: 640px; color: #d9d4ca; font-size: clamp(14px, 1.6vw, 17px); }
+.roles span.sep { color: var(--gold); margin: 0 .5em; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px; cursor: pointer; text-decoration: none;
+  padding: 12px 22px; border-radius: 99px; font-size: 14px; letter-spacing: .04em;
+  border: 1px solid var(--line-2); background: rgba(0, 0, 0, .25); transition: transform .25s var(--ease), background .25s, border-color .25s;
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+.btn:hover { transform: translateY(-2px); border-color: var(--gold); }
+.btn.primary { background: var(--gold); border-color: var(--gold); color: #15120c; font-weight: 600; }
+.btn.primary:hover { background: var(--gold-2); }
+.btn svg { width: 16px; height: 16px; }
+.scroll-cue {
+  position: absolute; right: 24px; bottom: 28px; writing-mode: vertical-rl; font-size: 11px;
+  letter-spacing: .3em; color: var(--muted); display: none; align-items: center; gap: 12px;
+}
+.scroll-cue::after { content: ""; width: 1px; height: 54px; background: linear-gradient(var(--muted), transparent); animation: cue 2.2s ease-in-out infinite; transform-origin: top; }
+@keyframes cue { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); } 100% { transform: scaleY(1); opacity: 0; } }
+@media (min-width: 900px) { .scroll-cue { display: flex; } }
+.dots { display: flex; gap: 8px; margin-top: 34px; }
+.dots button {
+  width: 26px; height: 3px; padding: 0; border: 0; border-radius: 3px; cursor: pointer;
+  background: rgba(255, 255, 255, .25); position: relative; overflow: hidden;
+}
+.dots button.on::after { content: ""; position: absolute; inset: 0; background: var(--gold); animation: fill 6s linear forwards; transform-origin: left; }
+@keyframes fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* ---------- sections ---------- */
+section.chapter { padding: 88px 0 24px; scroll-margin-top: calc(var(--head) - 40px); }
+.sec-head { display: grid; grid-template-columns: auto 1fr; gap: 0 18px; align-items: end; margin-bottom: 36px; }
+.sec-num { font: 500 clamp(54px, 9vw, 104px)/.8 var(--serif); color: transparent; -webkit-text-stroke: 1px rgba(216, 184, 120, .55); }
+.sec-head h2 { margin: 0; font: 600 clamp(26px, 3.6vw, 40px)/1.15 var(--serif); letter-spacing: .04em; }
+.sec-head h2 small { display: block; font: 500 12px/1.6 var(--sans); letter-spacing: .3em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+.sec-head p { grid-column: 1 / -1; margin: 18px 0 0; color: var(--muted); max-width: 640px; }
+.sub-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; margin: 56px 0 18px; padding-top: 28px; border-top: 1px solid var(--line); }
+.sub-head h3 { margin: 0; font: 600 21px/1.3 var(--serif); letter-spacing: .04em; }
+.sub-head p { margin: 0; color: var(--muted); flex: 1 1 320px; }
+
+.grid { display: grid; gap: 20px; }
+@media (min-width: 760px) { .grid.two { grid-template-columns: 1fr 1fr; gap: 24px; } }
+
+/* ---------- cards ---------- */
+.card {
+  position: relative; background: var(--card); border: 1px solid var(--line); border-radius: var(--r);
+  overflow: hidden; cursor: pointer; text-align: left;
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--lift, 0));
+  transition: transform .5s var(--ease), border-color .3s, box-shadow .5s;
+}
+.card:hover { --lift: -4px; border-color: rgba(216, 184, 120, .35); box-shadow: 0 24px 60px -24px rgba(0, 0, 0, .8); }
+.card.tilting { transition: transform .12s linear, border-color .3s, box-shadow .5s; }
+.card::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .4s;
+  background: radial-gradient(500px circle at var(--gx, 50%) var(--gy, 50%), rgba(241, 220, 174, .12), transparent 45%);
+}
+.card:hover::after { opacity: 1; }
+.media { position: relative; aspect-ratio: 16 / 9; background: #08080a; overflow: hidden; }
+.media > img, .media > video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease), opacity .6s; }
+.media > video { opacity: 0; }
+.media > video.playing { opacity: 1; }
+.card:hover .media > img, .card:hover .media > video { transform: scale(1.04); }
+.media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, .55)); pointer-events: none; }
+.play {
+  position: absolute; left: 50%; top: 50%; z-index: 2; width: 64px; height: 64px; margin: -32px 0 0 -32px;
+  border-radius: 50%; display: grid; place-items: center; color: #14110b;
+  background: rgba(241, 220, 174, .92); box-shadow: 0 0 0 0 rgba(241, 220, 174, .45);
+  transition: transform .4s var(--ease); animation: pulse 2.6s ease-out infinite;
+}
+.play svg { width: 22px; height: 22px; margin-left: 4px; }
+.card:hover .play { transform: scale(1.1); }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(241, 220, 174, .45); } 70%, 100% { box-shadow: 0 0 0 22px rgba(241, 220, 174, 0); } }
+.badge {
+  position: absolute; z-index: 2; bottom: 12px; font-size: 12px; letter-spacing: .04em;
+  padding: 3px 9px; border-radius: 6px; background: rgba(0, 0, 0, .6); color: #f3efe7;
+  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+}
+.badge.dur { right: 12px; font-variant-numeric: tabular-nums; }
+.badge.src { left: 12px; display: inline-flex; align-items: center; gap: 6px; }
+.badge.src svg { width: 14px; height: 14px; }
+.info { padding: 20px 22px 22px; }
+.info h3 { margin: 0; font: 600 20px/1.35 var(--serif); letter-spacing: .02em; }
+.info .alt { margin: 2px 0 0; color: var(--dim); font-size: 13px; letter-spacing: .04em; }
+.info p.desc { margin: 12px 0 0; color: var(--muted); font-size: 14px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 0; padding: 0; list-style: none; }
+.tags li { font-size: 12px; padding: 3px 10px; border-radius: 99px; border: 1px solid var(--line-2); color: #cfc9be; }
+.tags li.role { border-color: rgba(216, 184, 120, .5); color: var(--gold-2); }
+
+.card.feature { display: grid; }
+@media (min-width: 900px) {
+  .card.feature { grid-template-columns: 1.65fr 1fr; }
+  .card.feature .info { padding: 32px; display: flex; flex-direction: column; justify-content: center; }
+  .card.feature .info h3 { font-size: 28px; }
+}
+
+/* writing cards */
+.doc-card { display: flex; flex-direction: column; min-height: 100%; }
+.doc-cover {
+  position: relative; padding: 26px 24px; min-height: 230px; display: flex; flex-direction: column; justify-content: space-between;
+  background:
+    radial-gradient(120% 90% at 100% 0%, rgba(216, 184, 120, .16), transparent 55%),
+    linear-gradient(160deg, #1c1b21, #121216);
+  border-bottom: 1px solid var(--line);
+}
+.doc-cover .kicker { font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); }
+.regions { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 10px; }
+.regions li { display: grid; grid-template-columns: 26px 1fr; gap: 10px; align-items: baseline; }
+.regions li b { font: 600 17px/1.3 var(--serif); letter-spacing: .06em; }
+.regions li span { color: var(--muted); font-size: 12.5px; }
+.regions li em { font: 500 13px/1 var(--serif); font-style: normal; color: var(--gold); }
+.quote { margin: 18px 0 0; min-height: 4.6em; position: relative; }
+.quote q {
+  display: block; font: 500 clamp(19px, 2.4vw, 24px)/1.45 var(--serif); quotes: "“" "”";
+  transition: opacity .6s, transform .6s var(--ease);
+}
+.quote q.out { opacity: 0; transform: translateY(8px); }
+.quote cite { display: block; margin-top: 10px; font-style: normal; font-size: 12px; letter-spacing: .14em; color: var(--muted); }
+.doc-meta { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 18px; font-size: 12px; color: var(--dim); }
+.doc-meta span { display: inline-flex; align-items: center; gap: 6px; }
+.read-cta { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; color: var(--gold-2); font-size: 14px; }
+.read-cta svg { width: 16px; height: 16px; transition: transform .3s var(--ease); }
+.card:hover .read-cta svg { transform: translateX(4px); }
+.doc-card .info { flex: 1; display: flex; flex-direction: column; }
+.doc-card .info .read-cta { margin-top: auto; padding-top: 16px; }
+
+/* gallery */
+.gallery { display: grid; gap: 16px; }
+@media (min-width: 760px) { .gallery { grid-template-columns: 1fr 1fr; gap: 20px; } .gallery .wide { grid-column: 1 / -1; } }
+.shot { margin: 0; }
+.shot .media { aspect-ratio: auto; }
+.shot .media > img { position: static; height: auto; }
+.shot figcaption { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 14px 18px; font-size: 13px; color: var(--muted); }
+.shot figcaption b { font: 600 15px/1.3 var(--serif); color: var(--text); letter-spacing: .04em; }
+.zoom-hint {
+  position: absolute; z-index: 2; right: 12px; top: 12px; width: 34px; height: 34px; border-radius: 50%;
+  display: grid; place-items: center; background: rgba(0, 0, 0, .5); opacity: 0; transform: scale(.8); transition: .35s var(--ease);
+}
+.zoom-hint svg { width: 16px; height: 16px; }
+.card:hover .zoom-hint { opacity: 1; transform: none; }
+@media (hover: none) { .zoom-hint { opacity: .85; transform: none; } }
+
+/* process / render switch */
+.seg { display: inline-flex; padding: 3px; border-radius: 99px; background: rgba(0, 0, 0, .55); border: 1px solid var(--line-2); position: absolute; z-index: 3; left: 12px; top: 12px; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.seg button { border: 0; background: none; cursor: pointer; font-size: 12px; padding: 5px 12px; border-radius: 99px; color: var(--muted); transition: background .25s, color .25s; }
+.seg button[aria-pressed="true"] { background: var(--gold); color: #15120c; font-weight: 600; }
+.stack { position: relative; aspect-ratio: 1026 / 578; background: #0a0a0c; }
+.stack > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity .7s ease, transform 1.2s var(--ease); }
+.stack > img.on { opacity: 1; }
+.card:hover .stack > img.on { transform: scale(1.03); }
+
+/* reveal */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
+.reveal.in { opacity: 1; transform: none; }
+.card.reveal.in {
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--lift, 0));
+  transition: opacity 1s var(--ease), transform .5s var(--ease), border-color .3s, box-shadow .5s;
+}
+.card.reveal.in.tilting { transition: opacity 1s var(--ease), transform .12s linear, border-color .3s, box-shadow .5s; }
+
+/* footer */
+.foot { margin-top: 96px; padding: 64px 0 48px; border-top: 1px solid var(--line); background: linear-gradient(180deg, var(--bg-2), var(--bg)); }
+.foot-in { display: grid; gap: 32px; align-items: center; }
+@media (min-width: 760px) { .foot-in { grid-template-columns: 1fr auto; } }
+.foot h2 { margin: 0; font: 600 clamp(26px, 4vw, 42px)/1.2 var(--serif); }
+.foot p { color: var(--muted); margin: 10px 0 0; }
+.qr { display: flex; gap: 16px; align-items: center; }
+.qr img { width: 120px; height: 120px; background: #fff; border-radius: 10px; padding: 8px; }
+.qr span { font-size: 13px; color: var(--muted); max-width: 150px; }
+.copy { margin-top: 48px; font-size: 12px; color: var(--dim); letter-spacing: .06em; }
+
+/* ---------- overlays ---------- */
+.overlay {
+  position: fixed; inset: 0; z-index: 100; display: flex; flex-direction: column;
+  background: rgba(6, 6, 8, .94); opacity: 0; visibility: hidden; transition: opacity .35s, visibility 0s .35s;
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+}
+.overlay.open { opacity: 1; visibility: visible; transition: opacity .35s; }
+.ov-bar {
+  display: flex; align-items: center; gap: 12px; padding: 12px 16px; padding-top: max(12px, env(safe-area-inset-top));
+  border-bottom: 1px solid var(--line); flex: none;
+}
+.ov-title { flex: 1; min-width: 0; font: 600 16px/1.3 var(--serif); letter-spacing: .03em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ov-title small { color: var(--muted); font: 400 12px var(--sans); margin-left: 8px; letter-spacing: .04em; }
+.icon-btn {
+  flex: none; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line-2); background: rgba(255, 255, 255, .04);
+  display: grid; place-items: center; cursor: pointer; transition: background .2s, border-color .2s; text-decoration: none;
+}
+.icon-btn:hover { background: rgba(255, 255, 255, .1); border-color: var(--gold); }
+.icon-btn svg { width: 18px; height: 18px; }
+.icon-btn[disabled] { opacity: .3; cursor: default; }
+
+/* video player */
+.player-stage { flex: 1; display: grid; place-items: center; padding: 16px; min-height: 0; }
+.player-box { width: 100%; max-width: 1280px; aspect-ratio: 16 / 9; max-height: 100%; background: #000; border-radius: 10px; overflow: hidden; position: relative; }
+.player-box video, .player-box iframe { width: 100%; height: 100%; border: 0; display: block; background: #000; }
+.player-note { text-align: center; color: var(--muted); font-size: 13px; padding: 0 16px 18px; padding-bottom: max(18px, env(safe-area-inset-bottom)); min-height: 1em; }
+.player-note a { color: var(--gold-2); }
+.spinner { position: absolute; inset: 0; display: grid; place-items: center; }
+.spinner::before { content: ""; width: 36px; height: 36px; border-radius: 50%; border: 2px solid rgba(255, 255, 255, .15); border-top-color: var(--gold); animation: spin .9s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* lightbox */
+.lb-stage { flex: 1; position: relative; overflow: hidden; touch-action: none; user-select: none; -webkit-user-select: none; }
+.lb-stage img {
+  position: absolute; left: 50%; top: 50%; max-width: calc(100% - 32px); max-height: calc(100% - 32px);
+  transform: translate(-50%, -50%); transition: opacity .3s;
+}
+.lb-img-wrap { position: absolute; inset: 0; transform-origin: 0 0; transition: transform .35s var(--ease); cursor: zoom-in; }
+.lb-img-wrap.zoomed { cursor: grab; }
+.lb-img-wrap.dragging { transition: none; cursor: grabbing; }
+.lb-nav { position: absolute; top: 50%; z-index: 2; transform: translateY(-50%); }
+.lb-nav.prev { left: 14px; } .lb-nav.next { right: 14px; }
+.lb-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 18px; padding-bottom: max(12px, env(safe-area-inset-bottom)); border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+.lb-count { font-variant-numeric: tabular-nums; letter-spacing: .1em; }
+@media (hover: none) { .lb-nav { display: none; } }
+
+/* reader */
+.rd-tabs { display: inline-flex; padding: 3px; border-radius: 99px; border: 1px solid var(--line-2); flex: none; }
+.rd-tabs button { border: 0; background: none; cursor: pointer; font-size: 12px; padding: 5px 12px; border-radius: 99px; color: var(--muted); }
+.rd-tabs button[aria-pressed="true"] { background: var(--text); color: #111; }
+.rd-progress { height: 2px; background: var(--line); flex: none; }
+.rd-progress i { display: block; height: 100%; width: 0; background: var(--gold); transition: width .15s linear; }
+.rd-body { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; padding: 20px 12px 60px; }
+.rd-pages { max-width: 880px; margin: 0 auto; display: grid; gap: 14px; }
+.rd-pages img { width: 100%; height: auto; border-radius: 6px; background: #fff; box-shadow: 0 10px 40px -10px rgba(0, 0, 0, .6); }
+.rd-page-no { position: absolute; right: 18px; bottom: max(18px, env(safe-area-inset-bottom)); font-size: 12px; padding: 4px 12px; border-radius: 99px; background: rgba(0, 0, 0, .7); border: 1px solid var(--line-2); color: var(--text); font-variant-numeric: tabular-nums; pointer-events: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001s !important; animation-iteration-count: 1 !important; transition-duration: .001s !important; scroll-behavior: auto !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="head" id="head">
+  <div class="wrap head-in">
+    <a class="brand" href="#top" aria-label="宋源源作品集 Yuanyuan's Art Profile"><b>宋源源</b><small>Art Profile</small></a>
+    <nav class="chapters" aria-label="章节 Chapters">
+      <a href="#video"><i>01</i><span class="zh">视频</span><span class="en">Video</span></a>
+      <a href="#writing"><i>02</i><span class="zh">游戏文案</span><span class="en">Game Scripts</span></a>
+      <a href="#art2d"><i>03</i><span class="zh">平面插画</span><span class="en">2D Art</span></a>
+      <a href="#art3d"><i>04</i><span class="zh">3D 建模</span><span class="en">3D Art</span></a>
+    </nav>
+    <div class="lang" role="group" aria-label="语言 Language">
+      <button type="button" data-l="zh" aria-pressed="true">中</button>
+      <button type="button" data-l="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <!-- ============ HERO ============ -->
+  <section class="hero" aria-label="封面 Cover">
+    <div class="hero-bg" id="heroBg">
+      <img class="hero-slide on" style="--pos: 64%" src="media/img/illustration-2.jpg" srcset="media/img/illustration-2-sm.jpg 960w, media/img/illustration-2.jpg 1200w" sizes="110vw" alt="" fetchpriority="high">
+      <img class="hero-slide" style="--pos: 66%" data-srcset="media/img/illustration-3-sm.jpg 960w, media/img/illustration-3.jpg 2560w" sizes="110vw" alt="">
+      <img class="hero-slide" style="--pos: 42%" data-srcset="media/img/illustration-1-sm.jpg 960w, media/img/illustration-1.jpg 1200w" sizes="110vw" alt="">
+      <img class="hero-slide" style="--pos: 62%" data-srcset="media/img/scene-sm.jpg 960w, media/img/scene.jpg 1026w" sizes="110vw" alt="">
+    </div>
+    <div class="hero-in" id="heroIn">
+      <div class="wrap">
+        <p class="eyebrow"><span class="zh">作品集</span><span class="en">Portfolio</span></p>
+        <h1>Yuanyuan's<br>Art Profile<span class="cn">宋源源作品集</span></h1>
+        <p class="roles">
+          <span class="zh">视频导演<span class="sep">·</span>Live2D<span class="sep">·</span>AI 短片<span class="sep">·</span>游戏文案<span class="sep">·</span>插画<span class="sep">·</span>3D 建模</span>
+          <span class="en">Video Direction<span class="sep">·</span>Live2D<span class="sep">·</span>AI Film<span class="sep">·</span>Game Writing<span class="sep">·</span>Illustration<span class="sep">·</span>3D Modelling</span>
+        </p>
+        <div class="hero-cta">
+          <a class="btn primary" href="#video">
+            <span class="zh">浏览作品</span><span class="en">View Work</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          </a>
+          <button class="btn" type="button" data-video="genshin">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l11-6.5a1 1 0 0 0 0-1.72l-11-6.5A1 1 0 0 0 8 5.5Z"/></svg>
+            <span class="zh">播放纪录片</span><span class="en">Play Documentary</span>
+          </button>
+        </div>
+        <div class="dots" id="heroDots" aria-hidden="true"></div>
+      </div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true">SCROLL</div>
+  </section>
+
+  <!-- ============ 01 VIDEO ============ -->
+  <section class="chapter" id="video">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <span class="sec-num">01</span>
+        <h2><small>Video</small><span class="zh">视频</span><span class="en">Video</span></h2>
+      </header>
+
+      <div class="card feature reveal" role="button" tabindex="0" data-video="genshin">
+        <div class="media">
+          <img src="media/video/genshin-poster.jpg" alt="《原神启动!》纪录片画面 / Still from Cause We Love Genshin Impact" loading="lazy">
+          <video muted loop playsinline preload="none" data-src="media/video/genshin-preview.mp4"></video>
+          <span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.53.85l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5Z"/></svg></span>
+          <span class="badge src"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8ZM9.7 15.1V8.9l5.8 3.1-5.8 3.1Z"/></svg>YouTube</span>
+          <span class="badge dur">25:17</span>
+        </div>
+        <div class="info">
+          <h3><span class="zh">原神启动!</span><span class="en">Cause We Love Genshin Impact</span></h3>
+          <p class="alt"><span class="zh">Cause We Love Genshin Impact</span><span class="en">原神启动!</span></p>
+          <p class="desc">
+            <span class="zh">作为导演，与 B 站 UP 主徐Toso 合作，记录其团队拍摄制作原神短片的过程。</span>
+            <span class="en">As a director, I collaborated with Bilibili content creator Xu Toso to document his team's process of filming and producing a short film about Genshin Impact.</span>
+          </p>
+          <ul class="tags">
+            <li class="role"><span class="zh">导演</span><span class="en">Director</span></li>
+            <li><span class="zh">纪录片</span><span class="en">Documentary</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sub-head reveal">
+        <h3><span class="zh">Live2D 虚拟主播皮套</span><span class="en">Live2D VTuber Model</span></h3>
+      </div>
+      <div class="grid two">
+        <div class="card reveal" role="button" tabindex="0" data-video="live2d">
+          <div class="media">
+            <img src="media/video/live2d-poster.jpg" alt="Live2D 虚拟主播皮套 / Live2D VTuber model" loading="lazy">
+            <video muted loop playsinline preload="none" data-src="media/video/live2d-preview.mp4"></video>
+            <span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.53.85l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5Z"/></svg></span>
+            <span class="badge dur">0:09</span>
+          </div>
+          <div class="info">
+            <h3><span class="zh">Live2D 虚拟主播皮套</span><span class="en">Live2D VTuber Model</span></h3>
+            <p class="desc">
+              <span class="zh">独立完成立绘绘制、图层拆分、动作绑定和参数调整。</span>
+              <span class="en">Independently completed character art, layer separation, animation rigging and parameter adjustment.</span>
+            </p>
+            <ul class="tags">
+              <li class="role"><span class="zh">独立完成</span><span class="en">Solo</span></li>
+              <li><span class="zh">立绘</span><span class="en">Character Art</span></li>
+              <li><span class="zh">图层拆分</span><span class="en">Layer Separation</span></li>
+              <li><span class="zh">动作绑定</span><span class="en">Rigging</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-head reveal">
+        <h3><span class="zh">AI 短片</span><span class="en">AI Short Films</span></h3>
+        <p>
+          <span class="zh">独立完成故事设计、设定图与素材生成及后期剪辑。</span>
+          <span class="en">Independently completed the story design, concept art and asset generation, as well as post-production editing.</span>
+        </p>
+      </div>
+      <div class="grid two">
+        <div class="card reveal" role="button" tabindex="0" data-video="fox">
+          <div class="media">
+            <img src="media/video/fox-poster.jpg" alt="《狐梦》画面 / Still from The Story of Fox" loading="lazy">
+            <video muted loop playsinline preload="none" data-src="media/video/fox-preview.mp4"></video>
+            <span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.53.85l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5Z"/></svg></span>
+            <span class="badge dur">2:40</span>
+          </div>
+          <div class="info">
+            <h3><span class="zh">狐梦</span><span class="en">The Story of Fox</span></h3>
+            <p class="alt"><span class="zh">The Story of Fox</span><span class="en">狐梦</span></p>
+            <ul class="tags">
+              <li class="role"><span class="zh">AI 短片</span><span class="en">AI Short Film</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="card reveal" role="button" tabindex="0" data-video="infinite">
+          <div class="media">
+            <img src="media/video/infinite-poster.jpg" alt="《造梦机》画面 / Still from Infinite" loading="lazy">
+            <video muted loop playsinline preload="none" data-src="media/video/infinite-preview.mp4"></video>
+            <span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.53.85l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5Z"/></svg></span>
+            <span class="badge dur">4:45</span>
+          </div>
+          <div class="info">
+            <h3><span class="zh">造梦机</span><span class="en">Infinite</span></h3>
+            <p class="alt"><span class="zh">Infinite</span><span class="en">造梦机</span></p>
+            <ul class="tags">
+              <li class="role"><span class="zh">AI 短片</span><span class="en">AI Short Film</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02 WRITING ============ -->
+  <section class="chapter" id="writing">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <span class="sec-num">02</span>
+        <h2><small>Game Scripts</small><span class="zh">游戏文案</span><span class="en">Game Scripts</span></h2>
+        <p><span class="zh">点击卡片即可在线阅读，支持中 / 英文版本切换与 PDF 下载。</span><span class="en">Tap a card to read online — switch between English and Chinese, or download the PDF.</span></p>
+      </header>
+
+      <div class="grid two">
+        <div class="card doc-card reveal" role="button" tabindex="0" data-doc="world">
+          <div class="doc-cover">
+            <span class="kicker"><span class="zh">世界观 · 三大地域</span><span class="en">Worldbuilding · Three Regions</span></span>
+            <ul class="regions">
+              <li><em>I</em><div><b><span class="zh">流光荒漠</span><span class="en">Streamlight Desert</span></b><br><span><span class="zh">混乱与纷争</span><span class="en">Chaos and Strife</span></span></div></li>
+              <li><em>II</em><div><b><span class="zh">湖中之塔</span><span class="en">The Tower in the Lake</span></b><br><span><span class="zh">湖泊女神的叹息</span><span class="en">The Lake Goddess's Sigh</span></span></div></li>
+              <li><em>III</em><div><b><span class="zh">长明屿</span><span class="en">Everlight Isle</span></b><br><span><span class="zh">古神的低语</span><span class="en">Whispers of the Old God</span></span></div></li>
+            </ul>
+          </div>
+          <div class="info">
+            <h3><span class="zh">奇幻 RPG · 世界观、背景故事与对话</span><span class="en">Fantasy RPG · Worldbuilding, Backstory &amp; Dialogue</span></h3>
+            <p class="desc">
+              <span class="zh">奇幻 RPG 游戏中三块不同地域的主题概念、人文地理和风俗文化，以及其中一块地域的背景故事和人物对话设计。</span>
+              <span class="en">The thematic concepts, human geography and cultural customs of three distinct regions in a fantasy RPG, with the background story and dialogue design for one of these regions.</span>
+            </p>
+            <div class="doc-meta"><span>中文 13 <span class="zh">页</span><span class="en">pp</span></span><span>English 13 <span class="zh">页</span><span class="en">pp</span></span></div>
+            <span class="read-cta"><span class="zh">在线阅读</span><span class="en">Read online</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </div>
+        </div>
+
+        <div class="card doc-card reveal" role="button" tabindex="0" data-doc="knight">
+          <div class="doc-cover">
+            <span class="kicker"><span class="zh">人物设计 · 女骑士</span><span class="en">Character Design · The Lady Knight</span></span>
+            <blockquote class="quote" id="knightQuote" aria-live="polite">
+              <q><span class="zh">罪恶，由我审判。</span><span class="en">Sin is mine to judge.</span></q>
+              <cite><span class="zh">— 女骑士 · 台词</span><span class="en">— The Lady Knight · Lines</span></cite>
+            </blockquote>
+          </div>
+          <div class="info">
+            <h3><span class="zh">奇幻 RPG · 角色台词、背景故事与 PV 脚本</span><span class="en">Fantasy RPG · Character Lines, Backstory &amp; PV Script</span></h3>
+            <p class="desc">
+              <span class="zh">奇幻 RPG 游戏角色台词、背景故事和宣传 PV 脚本设计。</span>
+              <span class="en">Script design for character dialogue, backstories and promotional trailers for a fantasy RPG game.</span>
+            </p>
+            <div class="doc-meta"><span>中文 5 <span class="zh">页</span><span class="en">pp</span></span><span>English 6 <span class="zh">页</span><span class="en">pp</span></span></div>
+            <span class="read-cta"><span class="zh">在线阅读</span><span class="en">Read online</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 03 2D ART ============ -->
+  <section class="chapter" id="art2d">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <span class="sec-num">03</span>
+        <h2><small>2D Art</small><span class="zh">平面插画</span><span class="en">2D Art</span></h2>
+        <p><span class="zh">点击图片全屏查看，可左右滑动切换，双击放大细节。</span><span class="en">Tap to view full screen — swipe to browse, double-tap to zoom in.</span></p>
+      </header>
+      <div class="gallery">
+        <figure class="card shot wide reveal" role="button" tabindex="0" data-full="media/img/illustration-3.jpg" data-cap-zh="插画 01" data-cap-en="Illustration 01">
+          <div class="media"><img src="media/img/illustration-3-sm.jpg" srcset="media/img/illustration-3-sm.jpg 960w, media/img/illustration-3.jpg 2560w" sizes="(min-width: 1180px) 1120px, 100vw" width="2560" height="1440" alt="插画：公交车上的少女 / Illustration: a girl on a bus" loading="lazy"><span class="zoom-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></div>
+          <figcaption><b><span class="zh">插画 01</span><span class="en">Illustration 01</span></b><span>8000 × 4500</span></figcaption>
+        </figure>
+        <figure class="card shot reveal" role="button" tabindex="0" data-full="media/img/illustration-1.jpg" data-cap-zh="插画 02" data-cap-en="Illustration 02">
+          <div class="media"><img src="media/img/illustration-1-sm.jpg" width="960" height="540" alt="插画：书房中的两位角色 / Illustration: two characters in a study" loading="lazy"><span class="zoom-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></div>
+          <figcaption><b><span class="zh">插画 02</span><span class="en">Illustration 02</span></b></figcaption>
+        </figure>
+        <figure class="card shot reveal" role="button" tabindex="0" data-full="media/img/illustration-2.jpg" data-cap-zh="插画 03" data-cap-en="Illustration 03">
+          <div class="media"><img src="media/img/illustration-2-sm.jpg" width="960" height="540" alt="插画：黄昏街头的角色 / Illustration: a character on a city street at dusk" loading="lazy"><span class="zoom-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></div>
+          <figcaption><b><span class="zh">插画 03</span><span class="en">Illustration 03</span></b></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04 3D ART ============ -->
+  <section class="chapter" id="art3d">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <span class="sec-num">04</span>
+        <h2><small>3D Art</small><span class="zh">3D 建模</span><span class="en">3D Art</span></h2>
+        <p><span class="zh">场景作品可切换「成品 / 过程」查看建模工程。</span><span class="en">Switch between “Render” and “Process” on the scene to see the working file.</span></p>
+      </header>
+      <div class="gallery">
+        <figure class="card shot wide reveal" role="button" tabindex="0" id="sceneCard">
+          <div class="media">
+            <div class="stack">
+              <img class="on" src="media/img/scene.jpg" data-full="media/img/scene.jpg" data-cap-zh="场景建模 · 成品" data-cap-en="Scene Modelling · Render" alt="3D 场景建模成品：王座大厅 / 3D scene render: throne hall" loading="lazy">
+              <img src="media/img/scene-process.jpg" data-full="media/img/scene-process.jpg" data-cap-zh="场景建模 · 过程（Blender）" data-cap-en="Scene Modelling · Process (Blender)" alt="3D 场景建模过程截图 / 3D scene modelling in progress" loading="lazy">
+            </div>
+            <div class="seg" role="group" aria-label="成品 / 过程 Render / Process">
+              <button type="button" data-show="0" aria-pressed="true"><span class="zh">成品</span><span class="en">Render</span></button>
+              <button type="button" data-show="1" aria-pressed="false"><span class="zh">过程</span><span class="en">Process</span></button>
+            </div>
+            <span class="zoom-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+          </div>
+          <figcaption><b><span class="zh">场景建模</span><span class="en">Scene Modelling</span></b><span>Blender</span></figcaption>
+        </figure>
+        <figure class="card shot reveal" role="button" tabindex="0" data-full="media/img/character-1.jpg" data-cap-zh="角色建模 01（ZBrush）" data-cap-en="Character Modelling 01 (ZBrush)">
+          <div class="media"><img src="media/img/character-1-sm.jpg" width="960" height="524" alt="ZBrush 角色雕刻 / Character sculpt in ZBrush" loading="lazy"><span class="zoom-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></div>
+          <figcaption><b><span class="zh">角色建模 01</span><span class="en">Character Modelling 01</span></b><span>ZBrush</span></figcaption>
+        </figure>
+        <figure class="card shot reveal" role="button" tabindex="0" data-full="media/img/character-2.jpg" data-cap-zh="角色建模 02（Cinema 4D）" data-cap-en="Character Modelling 02 (Cinema 4D)">
+          <div class="media"><img src="media/img/character-2-sm.jpg" width="960" height="494" alt="Cinema 4D 角色绑定 / Character rig in Cinema 4D" loading="lazy"><span class="zoom-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></div>
+          <figcaption><b><span class="zh">角色建模 02</span><span class="en">Character Modelling 02</span></b><span>Cinema 4D</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <h2><span class="zh">感谢浏览</span><span class="en">Thanks for viewing</span></h2>
+        <p><span class="zh">宋源源 · 视频 / Live2D / AI 短片 / 游戏文案 / 插画 / 3D</span><span class="en">Song Yuanyuan · Video / Live2D / AI Film / Game Writing / Illustration / 3D</span></p>
+      </div>
+      <div class="qr">
+        <img src="media/qr.svg" alt="本页二维码 / QR code for this page" width="120" height="120">
+        <span><span class="zh">扫码在手机上打开本作品集</span><span class="en">Scan to open this portfolio on your phone</span></span>
+      </div>
+    </div>
+    <p class="copy">© 2026 宋源源 Song Yuanyuan. <span class="zh">作品版权归作者所有。</span><span class="en">All works © the artist.</span></p>
+  </div>
+</footer>
+
+<!-- ============ OVERLAYS ============ -->
+<div class="overlay" id="player" role="dialog" aria-modal="true" aria-labelledby="playerTitle">
+  <div class="ov-bar">
+    <div class="ov-title" id="playerTitle"></div>
+    <a class="icon-btn" id="playerExt" href="#" target="_blank" rel="noopener" hidden aria-label="在 YouTube 打开 / Open on YouTube">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+    </a>
+    <button class="icon-btn" type="button" data-close aria-label="关闭 / Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <div class="player-stage"><div class="player-box" id="playerBox"></div></div>
+  <p class="player-note" id="playerNote"></p>
+</div>
+
+<div class="overlay" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lbTitle">
+  <div class="ov-bar">
+    <div class="ov-title" id="lbTitle"></div>
+    <button class="icon-btn" type="button" data-close aria-label="关闭 / Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <div class="lb-stage" id="lbStage">
+    <div class="lb-img-wrap" id="lbWrap"><img id="lbImg" alt=""></div>
+    <button class="icon-btn lb-nav prev" type="button" id="lbPrev" aria-label="上一张 / Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <button class="icon-btn lb-nav next" type="button" id="lbNext" aria-label="下一张 / Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+  </div>
+  <div class="lb-foot"><span class="lb-count" id="lbCount"></span><span><span class="zh">双击放大 · 左右滑动切换</span><span class="en">Double-tap to zoom · Swipe to browse</span></span></div>
+</div>
+
+<div class="overlay" id="reader" role="dialog" aria-modal="true" aria-labelledby="rdTitle">
+  <div class="ov-bar">
+    <div class="ov-title" id="rdTitle"></div>
+    <div class="rd-tabs" role="group" aria-label="文档语言 Document language">
+      <button type="button" data-rl="zh" aria-pressed="true">中文</button>
+      <button type="button" data-rl="en" aria-pressed="false">EN</button>
+    </div>
+    <a class="icon-btn" id="rdDownload" href="#" download aria-label="下载 PDF / Download PDF">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
+    </a>
+    <button class="icon-btn" type="button" data-close aria-label="关闭 / Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <div class="rd-progress"><i id="rdBar"></i></div>
+  <div class="rd-body" id="rdBody"><div class="rd-pages" id="rdPages"></div></div>
+  <span class="rd-page-no" id="rdPageNo"></span>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var root = document.documentElement;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var store = {
+    get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+    set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  };
+  function lang() { return root.getAttribute('data-lang'); }
+
+  /* ---------- language ---------- */
+  var langListeners = [];
+  function setLang(l) {
+    root.setAttribute('data-lang', l);
+    root.lang = l === 'zh' ? 'zh-CN' : 'en';
+    $$('.lang button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.l === l)); });
+    store.set('lang', l);
+    langListeners.forEach(function (fn) { fn(l); });
+  }
+  $$('.lang button').forEach(function (b) { b.addEventListener('click', function () { setLang(b.dataset.l); }); });
+  setLang(store.get('lang') || (/^zh/i.test(navigator.language || 'zh') ? 'zh' : 'en'));
+
+  /* ---------- header ---------- */
+  var head = $('#head');
+  var heroIn = $('#heroIn'), heroBg = $('#heroBg');
+  var ticking = false;
+  function onScroll() {
+    var y = window.scrollY || window.pageYOffset;
+    head.classList.toggle('solid', y > 40);
+    if (!reduceMotion && y < window.innerHeight * 1.1) {
+      heroIn.style.transform = 'translateY(' + (y * 0.25) + 'px)';
+      heroIn.style.opacity = String(Math.max(0, 1 - y / (window.innerHeight * 0.75)));
+      heroBg.style.transform = 'translateY(' + (y * 0.12) + 'px)';
+    }
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  onScroll();
+
+  /* ---------- hero slideshow ---------- */
+  var slides = $$('.hero-slide'), dotsBox = $('#heroDots'), cur = 0, timer;
+  slides.forEach(function (s, i) {
+    var d = document.createElement('button');
+    d.type = 'button'; d.tabIndex = -1;
+    d.addEventListener('click', function () { show(i); });
+    dotsBox.appendChild(d);
+  });
+  function loadSlide(s) { if (s.dataset.srcset) { s.srcset = s.dataset.srcset; s.removeAttribute('data-srcset'); } }
+  function show(i) {
+    loadSlide(slides[i]);
+    if (i !== cur) {
+      // keep the outgoing slide's zoom running while it fades, so it doesn't snap back
+      var prev = slides[cur];
+      prev.classList.add('was');
+      prev.classList.remove('on');
+      setTimeout(function () { prev.classList.remove('was'); }, 2000);
+    }
+    cur = i;
+    slides[cur].classList.add('on');
+    $$('button', dotsBox).forEach(function (d, j) { d.classList.toggle('on', j === cur); });
+    loadSlide(slides[(cur + 1) % slides.length]);
+    clearTimeout(timer);
+    if (!reduceMotion) timer = setTimeout(function () { show((cur + 1) % slides.length); }, 6000);
+  }
+  window.addEventListener('load', function () { show(0); });
+
+  /* ---------- reveal + chapter tracking ---------- */
+  if ('IntersectionObserver' in window) {
+    var revealIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); revealIO.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    $$('.reveal').forEach(function (el) { revealIO.observe(el); });
+
+    var links = $$('.chapters a');
+    var navIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        links.forEach(function (a) {
+          var on = a.getAttribute('href') === '#' + e.target.id;
+          a.classList.toggle('on', on);
+          if (on && a.scrollIntoView && window.innerWidth < 900) {
+            a.parentNode.scrollTo({ left: a.offsetLeft - 20, behavior: 'smooth' });
+          }
+        });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    $$('section.chapter').forEach(function (s) { navIO.observe(s); });
+
+    /* muted preview loops play only while visible */
+    var pvIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        var v = e.target;
+        if (e.isIntersecting && !document.body.classList.contains('modal-open')) {
+          if (!v.src) v.src = v.dataset.src;
+          var p = v.play();
+          if (p && p.catch) p.catch(function () {});
+        } else if (!v.paused) {
+          v.pause();
+        }
+      });
+    }, { threshold: 0.55 });
+    $$('video[data-src]').forEach(function (v) {
+      v.addEventListener('playing', function () { v.classList.add('playing'); });
+      if (!reduceMotion) pvIO.observe(v);
+    });
+  } else {
+    $$('.reveal').forEach(function (el) { el.classList.add('in'); });
+  }
+
+  /* ---------- card tilt (desktop) ---------- */
+  if (finePointer && !reduceMotion) {
+    $$('.card').forEach(function (c) {
+      c.addEventListener('pointermove', function (e) {
+        var r = c.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        c.classList.add('tilting');
+        c.style.setProperty('--ry', ((x - 0.5) * 5).toFixed(2) + 'deg');
+        c.style.setProperty('--rx', ((0.5 - y) * 4).toFixed(2) + 'deg');
+        c.style.setProperty('--gx', (x * 100).toFixed(1) + '%');
+        c.style.setProperty('--gy', (y * 100).toFixed(1) + '%');
+      });
+      c.addEventListener('pointerleave', function () {
+        c.classList.remove('tilting');
+        c.style.setProperty('--rx', '0deg'); c.style.setProperty('--ry', '0deg');
+      });
+    });
+  }
+
+  /* ---------- rotating knight quotes ---------- */
+  var QUOTES = [
+    ['罪恶，由我审判。', 'Sin is mine to judge.'],
+    ['别想掌控我。', "Don't even think about controlling me."],
+    ['心流剑法的奥秘？应当是以剑写心吧。', "The secret of Heartflow swordsmanship? I suppose it's writing your heart with the sword."],
+    ['我不认可的东西，由我亲自改变。', 'Whatever I refuse to accept, I will change with my own hands.'],
+    ['这顶冠冕来自我姐姐，我...很想她。', 'This coronet was my sister\'s. I... miss her very much.']
+  ];
+  var qEl = $('#knightQuote q'), qi = 0;
+  if (!reduceMotion) {
+    setInterval(function () {
+      if (document.hidden) return;
+      qEl.classList.add('out');
+      setTimeout(function () {
+        qi = (qi + 1) % QUOTES.length;
+        qEl.innerHTML = '<span class="zh"></span><span class="en"></span>';
+        qEl.children[0].textContent = QUOTES[qi][0];
+        qEl.children[1].textContent = QUOTES[qi][1];
+        qEl.classList.remove('out');
+      }, 600);
+    }, 4200);
+  }
+
+  /* ---------- overlays ---------- */
+  var openOverlay = null, lastFocus = null;
+  function open(ov) {
+    lastFocus = document.activeElement;
+    openOverlay = ov;
+    ov.classList.add('open');
+    root.classList.add('locked');
+    document.body.classList.add('modal-open');
+    $$('video[data-src]').forEach(function (v) { v.pause(); });
+    setTimeout(function () { var b = $('[data-close]', ov); if (b) b.focus(); }, 50);
+  }
+  function close() {
+    if (!openOverlay) return;
+    var ov = openOverlay;
+    ov.classList.remove('open');
+    openOverlay = null;
+    root.classList.remove('locked');
+    document.body.classList.remove('modal-open');
+    if (ov.id === 'player') setTimeout(function () { $('#playerBox').innerHTML = ''; }, 350);
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  $$('[data-close]').forEach(function (b) { b.addEventListener('click', close); });
+  document.addEventListener('keydown', function (e) {
+    if (!openOverlay) {
+      if ((e.key === 'Enter' || e.key === ' ') && e.target.getAttribute && e.target.getAttribute('role') === 'button') {
+        e.preventDefault(); e.target.click();
+      }
+      return;
+    }
+    if (e.key === 'Escape') close();
+    if (openOverlay.id === 'lightbox') {
+      if (e.key === 'ArrowLeft') lbGo(-1);
+      if (e.key === 'ArrowRight') lbGo(1);
+    }
+  });
+
+  function titleOf(card) {
+    var h = $('h3', card);
+    return h ? h.innerHTML : '';
+  }
+
+  /* ---------- video player ---------- */
+  var YT_ID = 'NszK_631MBY';
+  // The YouTube upload currently has embedding disabled, so the hosted copy plays in-page
+  // and YouTube is offered as an HD link. If embedding is turned on later, set this to true.
+  var YT_EMBED = false;
+  var VIDEOS = {
+    genshin: { src: 'media/video/genshin.mp4', poster: 'media/video/genshin-poster.jpg', yt: YT_ID },
+    live2d: { src: 'media/video/live2d.mp4', poster: 'media/video/live2d-poster.jpg', loop: true },
+    fox: { src: 'media/video/fox.mp4', poster: 'media/video/fox-poster.jpg' },
+    infinite: { src: 'media/video/infinite.mp4', poster: 'media/video/infinite-poster.jpg' }
+  };
+  // YouTube is unreachable on some networks (e.g. mainland China); probe once and fall back to the self-hosted copy.
+  var ytReachable = new Promise(function (resolve) {
+    var img = new Image(), done = false;
+    function fin(ok) { if (!done) { done = true; resolve(ok); } }
+    setTimeout(function () { fin(false); }, 4000);
+    img.onload = function () { fin(img.naturalWidth > 0); };
+    img.onerror = function () { fin(false); };
+    img.src = 'https://i.ytimg.com/vi/' + YT_ID + '/default.jpg?t=' + Date.now();
+  });
+
+  var player = $('#player'), pBox = $('#playerBox'), pNote = $('#playerNote'), pExt = $('#playerExt');
+  function playVideo(key, card) {
+    var v = VIDEOS[key];
+    $('#playerTitle').innerHTML = card ? titleOf(card) : titleOf($('.card[data-video="' + key + '"]'));
+    pNote.innerHTML = '';
+    pExt.hidden = !v.yt;
+    if (v.yt) pExt.href = 'https://youtu.be/' + v.yt;
+    open(player);
+    if (v.yt && !YT_EMBED) {
+      localVideo(v);
+      ytReachable.then(function (ok) {
+        if (!ok || !player.classList.contains('open')) return;
+        pNote.innerHTML = '<span class="zh">站内为 480p 版本 · <a href="https://youtu.be/' + v.yt + '" target="_blank" rel="noopener">在 YouTube 观看高清版 ↗</a></span>' +
+          '<span class="en">Playing the 480p copy · <a href="https://youtu.be/' + v.yt + '" target="_blank" rel="noopener">Watch in HD on YouTube ↗</a></span>';
+      });
+    } else if (v.yt) {
+      pBox.innerHTML = '<div class="spinner"></div>';
+      ytReachable.then(function (ok) {
+        if (!player.classList.contains('open')) return;
+        if (ok) {
+          pBox.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + v.yt +
+            '?autoplay=1&rel=0&playsinline=1" title="YouTube" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>';
+          pNote.innerHTML = '<span class="zh">如无法播放，可 <a href="#" data-local>切换到站内版本</a></span><span class="en">Not playing? <a href="#" data-local>Switch to the hosted copy</a></span>';
+        } else {
+          localVideo(v);
+          pNote.innerHTML = '<span class="zh">当前网络无法访问 YouTube，已自动切换为站内版本（480p）。</span><span class="en">YouTube is unreachable on this network — playing the hosted copy (480p).</span>';
+        }
+      });
+    } else {
+      localVideo(v);
+    }
+  }
+  function localVideo(v) {
+    pBox.innerHTML = '';
+    var el = document.createElement('video');
+    el.src = v.src; el.poster = v.poster; el.controls = true; el.autoplay = true;
+    el.setAttribute('playsinline', ''); el.setAttribute('webkit-playsinline', ''); el.preload = 'auto';
+    if (v.loop) el.loop = true;
+    pBox.appendChild(el);
+    var p = el.play(); if (p && p.catch) p.catch(function () {});
+  }
+  pNote.addEventListener('click', function (e) {
+    if (e.target.hasAttribute('data-local')) { e.preventDefault(); localVideo(VIDEOS.genshin); pNote.innerHTML = ''; }
+  });
+  $$('[data-video]').forEach(function (el) {
+    el.addEventListener('click', function () { playVideo(el.dataset.video, el.classList.contains('card') ? el : null); });
+  });
+
+  /* ---------- lightbox ---------- */
+  var lb = $('#lightbox'), lbImg = $('#lbImg'), lbWrap = $('#lbWrap'), lbStage = $('#lbStage');
+  var items = [], lbIndex = 0;
+  function collect() {
+    items = [];
+    $$('[data-full]').forEach(function (el) {
+      items.push({ el: el, src: el.dataset.full, zh: el.dataset.capZh, en: el.dataset.capEn, alt: (el.querySelector('img') || el).getAttribute('alt') });
+    });
+  }
+  function lbRender() {
+    var it = items[lbIndex];
+    resetZoom();
+    lbImg.style.opacity = '0';
+    var im = new Image();
+    im.onload = im.onerror = function () { lbImg.src = it.src; lbImg.alt = it.alt || ''; lbImg.style.opacity = '1'; };
+    im.src = it.src;
+    $('#lbTitle').innerHTML = '<span class="zh"></span><span class="en"></span>';
+    $('#lbTitle').children[0].textContent = it.zh;
+    $('#lbTitle').children[1].textContent = it.en;
+    $('#lbCount').textContent = (lbIndex + 1) + ' / ' + items.length;
+    $('#lbPrev').disabled = lbIndex === 0;
+    $('#lbNext').disabled = lbIndex === items.length - 1;
+  }
+  function lbOpen(src) {
+    collect();
+    lbIndex = Math.max(0, items.findIndex(function (it) { return it.src === src; }));
+    lbRender();
+    open(lb);
+  }
+  function lbGo(d) {
+    var n = lbIndex + d;
+    if (n < 0 || n >= items.length) return;
+    lbIndex = n; lbRender();
+  }
+  $('#lbPrev').addEventListener('click', function () { lbGo(-1); });
+  $('#lbNext').addEventListener('click', function () { lbGo(1); });
+
+  // zoom & pan
+  var Z = 2.5, scale = 1, tx = 0, ty = 0;
+  function apply() { lbWrap.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + scale + ')'; lbWrap.classList.toggle('zoomed', scale > 1); }
+  function resetZoom() { scale = 1; tx = 0; ty = 0; apply(); }
+  function clamp() {
+    var w = lbStage.clientWidth, h = lbStage.clientHeight;
+    tx = Math.min(0, Math.max(w * (1 - scale), tx));
+    ty = Math.min(0, Math.max(h * (1 - scale), ty));
+  }
+  function toggleZoom(cx, cy) {
+    var r = lbStage.getBoundingClientRect();
+    if (scale > 1) { resetZoom(); return; }
+    var x = cx - r.left, y = cy - r.top;
+    scale = Z; tx = x * (1 - Z); ty = y * (1 - Z); clamp(); apply();
+  }
+  var ptr = null, lastTap = 0;
+  lbStage.addEventListener('pointerdown', function (e) {
+    if (e.target.closest('.lb-nav')) return;
+    ptr = { id: e.pointerId, x: e.clientX, y: e.clientY, tx: tx, ty: ty, moved: false };
+    lbWrap.classList.add('dragging');
+    try { lbStage.setPointerCapture(e.pointerId); } catch (err) {}
+  });
+  lbStage.addEventListener('pointermove', function (e) {
+    if (!ptr || e.pointerId !== ptr.id) return;
+    var dx = e.clientX - ptr.x, dy = e.clientY - ptr.y;
+    if (Math.abs(dx) + Math.abs(dy) > 6) ptr.moved = true;
+    if (scale > 1) { tx = ptr.tx + dx; ty = ptr.ty + dy; clamp(); apply(); }
+    else { lbWrap.style.transform = 'translateX(' + dx * 0.6 + 'px)'; }
+  });
+  function endPtr(e) {
+    if (!ptr || e.pointerId !== ptr.id) return;
+    var dx = e.clientX - ptr.x, moved = ptr.moved;
+    lbWrap.classList.remove('dragging');
+    ptr = null;
+    if (scale === 1) {
+      apply();
+      if (moved && Math.abs(dx) > 50) { lbGo(dx < 0 ? 1 : -1); return; }
+    }
+    if (!moved) {
+      var now = Date.now();
+      if (finePointer || now - lastTap < 320) { toggleZoom(e.clientX, e.clientY); lastTap = 0; }
+      else lastTap = now;
+    }
+  }
+  lbStage.addEventListener('pointerup', endPtr);
+  lbStage.addEventListener('pointercancel', endPtr);
+  window.addEventListener('resize', function () { if (openOverlay === lb) resetZoom(); });
+
+  $$('.card[data-full]').forEach(function (c) { c.addEventListener('click', function () { lbOpen(c.dataset.full); }); });
+
+  /* scene: render / process switch */
+  var scene = $('#sceneCard'), sceneImgs = $$('.stack > img', scene), sceneBtns = $$('.seg button', scene);
+  sceneBtns.forEach(function (b) {
+    b.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var i = +b.dataset.show;
+      sceneImgs.forEach(function (im, j) { im.classList.toggle('on', i === j); });
+      sceneBtns.forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+    });
+  });
+  scene.addEventListener('click', function () { lbOpen($('.stack > img.on', scene).dataset.full); });
+
+  /* ---------- reader ---------- */
+  // page images are 1200px wide; h = height of each page in px
+  var DOCS = {
+    world: {
+      zh: { title: '世界观 · 背景故事 · 对话', file: '奇幻RPG-世界观+背景故事+对话', slug: 'world-zh',
+            h: [1840, 1840, 1824, 1830, 1827, 1805, 1796, 1832, 1544, 1840, 1840, 1840, 1840] },
+      en: { title: 'Worldbuilding · Backstory · Dialogue', file: 'Fantasy RPG - Worldbuilding + Backstory + Dialogue', slug: 'world-en',
+            h: [1915, 1915, 1915, 1915, 1915, 1915, 1915, 1915, 1915, 1915, 1915, 1915, 1915] }
+    },
+    knight: {
+      zh: { title: '女骑士 · 台词 · 背景故事 · PV', file: '奇幻RPG-人物+背景故事+PV', slug: 'knight-zh',
+            h: [1779, 1779, 1779, 1779, 1779] },
+      en: { title: 'The Lady Knight · Lines · Backstory · PV', file: 'Fantasy RPG - Character + Backstory + PV', slug: 'knight-en',
+            h: [1939, 1939, 1939, 1939, 1939, 1939] }
+    }
+  };
+  var reader = $('#reader'), rdBody = $('#rdBody'), rdPages = $('#rdPages'), rdKey = null, rdLang = 'zh';
+  function rdRender() {
+    var d = DOCS[rdKey][rdLang], html = '';
+    $('#rdTitle').textContent = d.title;
+    $('#rdDownload').href = 'media/docs/' + d.slug + '.pdf';
+    $('#rdDownload').setAttribute('download', d.file + '.pdf');
+    for (var i = 1; i <= d.h.length; i++) {
+      var n = (i < 10 ? '0' : '') + i;
+      html += '<img src="media/docs/' + d.slug + '-' + n + '.jpg" width="1200" height="' + d.h[i - 1] + '" loading="' + (i < 3 ? 'eager' : 'lazy') + '" alt="' + (rdLang === 'zh' ? '第 ' + i + ' 页' : 'Page ' + i) + '">';
+    }
+    rdPages.innerHTML = html;
+    rdBody.scrollTop = 0;
+    $$('.rd-tabs button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.rl === rdLang)); });
+    rdProgress();
+  }
+  function rdProgress() {
+    var max = rdBody.scrollHeight - rdBody.clientHeight;
+    $('#rdBar').style.width = (max > 0 ? rdBody.scrollTop / max * 100 : 0) + '%';
+    var imgs = rdPages.children, mid = rdBody.scrollTop + rdBody.clientHeight * 0.4, page = 1;
+    for (var i = 0; i < imgs.length; i++) { if (imgs[i].offsetTop <= mid) page = i + 1; }
+    $('#rdPageNo').textContent = page + ' / ' + imgs.length;
+  }
+  rdBody.addEventListener('scroll', function () { requestAnimationFrame(rdProgress); }, { passive: true });
+  $$('.rd-tabs button').forEach(function (b) { b.addEventListener('click', function () { rdLang = b.dataset.rl; rdRender(); }); });
+  $$('[data-doc]').forEach(function (c) {
+    c.addEventListener('click', function () { rdKey = c.dataset.doc; rdLang = lang(); rdRender(); open(reader); });
+  });
+
+  /* deep links: #play-genshin etc. */
+  var m = location.hash.match(/^#play-(\w+)/);
+  if (m && VIDEOS[m[1]]) setTimeout(function () { playVideo(m[1]); }, 300);
+})();
+</script>
+</body>
+</html>
