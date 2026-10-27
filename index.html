@@ -875,9 +875,9 @@ section.chapter { padding: 88px 0 24px; scroll-margin-top: calc(var(--head) - 40
 
   /* ---------- video player ---------- */
   var YT_ID = 'NszK_631MBY';
-  // The YouTube upload currently has embedding disabled, so the hosted copy plays in-page
-  // and YouTube is offered as an HD link. If embedding is turned on later, set this to true.
-  var YT_EMBED = false;
+  // Embed the YouTube upload (HD) when reachable; otherwise fall back to the hosted 480p copy.
+  // Set to false if embedding is ever disabled on YouTube again.
+  var YT_EMBED = true;
   var VIDEOS = {
     genshin: { src: 'media/video/genshin.mp4', poster: 'media/video/genshin-poster.jpg', yt: YT_ID },
     live2d: { src: 'media/video/live2d.mp4', poster: 'media/video/live2d-poster.jpg', loop: true },
