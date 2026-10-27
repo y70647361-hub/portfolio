@@ -262,15 +262,84 @@ section.chapter { padding: 88px 0 24px; scroll-margin-top: calc(var(--head) - 40
 .shot .media > img { position: static; height: auto; }
 .shot figcaption { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 14px 18px; font-size: 13px; color: var(--muted); }
 .shot figcaption b { font: 600 15px/1.3 var(--serif); color: var(--text); letter-spacing: .04em; }
-/* portrait pieces: 2 / 3 per row, a short last row stays centred */
-.gallery + .gallery { margin-top: 16px; }
-.gallery.tall { display: flex; flex-wrap: wrap; justify-content: center; }
-.gallery.tall > .shot { flex: 0 0 calc((100% - 16px) / 2); min-width: 0; }
-.gallery.tall .shot .media { aspect-ratio: 3 / 4; }
-.gallery.tall .shot .media > img { position: absolute; height: 100%; }
-@media (min-width: 760px) {
-  .gallery + .gallery { margin-top: 20px; }
-  .gallery.tall > .shot { flex-basis: calc((100% - 40px) / 3); }
+/* portrait pieces as trading cards: swipe carousel on touch / narrow screens, fanned hand on desktop */
+.deck-wrap { margin-top: 20px; }
+.deck {
+  --cw: min(64vw, 300px);
+  position: relative; display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+  margin: 0 calc(50% - 50vw); padding: 26px calc(50vw - var(--cw) / 2) 30px;
+}
+.deck::-webkit-scrollbar { display: none; }
+.tcard {
+  position: relative; flex: 0 0 var(--cw); margin: 0; scroll-snap-align: center; cursor: pointer;
+  transform: scale(var(--s, 1)); transition: opacity .6s;
+}
+.tcard-in {
+  position: relative; aspect-ratio: 3 / 4; transform-style: preserve-3d;
+  transform: perspective(1000px) rotateY(calc(var(--flip, 0deg) + var(--ry, 0deg))) rotateX(var(--rx, 0deg));
+}
+.tcard-face, .tcard-back {
+  position: absolute; inset: 0; border-radius: 14px; overflow: hidden;
+  -webkit-backface-visibility: hidden; backface-visibility: hidden;
+  box-shadow: 0 0 0 1px rgba(216, 184, 120, .55), 0 22px 44px -18px rgba(0, 0, 0, .9);
+}
+.tcard-face { background: #0a0a0c; }
+.tcard-face img { width: 100%; height: 100%; object-fit: cover; }
+.tcard-face::before, .tcard-back::before {
+  content: ""; position: absolute; inset: 7px; z-index: 3; pointer-events: none;
+  border: 1px solid rgba(241, 220, 174, .42); border-radius: 9px;
+}
+.holo, .tcard-face::after { position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: var(--ho, 0); transition: opacity .4s; }
+.holo {
+  mix-blend-mode: color-dodge;
+  background: linear-gradient(115deg, transparent 36%, rgba(241, 220, 174, .3) 44%, rgba(255, 150, 190, .18) 49%, rgba(130, 200, 255, .22) 54%, transparent 62%);
+  background-size: 260% 260%; background-position: var(--gx, 50%) var(--gy, 50%);
+}
+.tcard-face::after {
+  content: ""; mix-blend-mode: overlay;
+  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 255, 255, .3), transparent 45%);
+}
+.plate {
+  position: absolute; z-index: 3; left: 0; right: 0; bottom: 0; padding: 40px 12px 17px; text-align: center;
+  background: linear-gradient(transparent, rgba(8, 8, 10, .88));
+  font: 600 15px/1 var(--serif); letter-spacing: .12em; color: var(--gold-2);
+}
+.plate::before, .plate::after { content: ""; display: inline-block; vertical-align: middle; width: 20px; height: 1px; margin: 0 10px; background: rgba(216, 184, 120, .6); }
+.tcard-back {
+  transform: rotateY(180deg); display: grid; place-items: center;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(216, 184, 120, .22), transparent 58%),
+    repeating-linear-gradient(45deg, rgba(216, 184, 120, .07) 0 1px, transparent 1px 11px),
+    repeating-linear-gradient(-45deg, rgba(216, 184, 120, .07) 0 1px, transparent 1px 11px),
+    #16151b;
+}
+.tcard-back span {
+  width: 84px; height: 84px; border-radius: 50%; display: grid; place-items: center;
+  border: 1px solid rgba(241, 220, 174, .55); font: 600 40px/1 var(--serif); color: var(--gold);
+}
+.tcard.tilting .tcard-in { transition: transform .12s linear; }
+/* deal-in: face down and hidden until the deck scrolls into view */
+.deck.stacked .tcard { opacity: 0; transform: translateY(40px) scale(.9); }
+.deck.stacked .tcard-in { --flip: 180deg; }
+.deck.dealing .tcard { transition: transform .8s var(--ease) calc(var(--i) * 80ms), opacity .5s calc(var(--i) * 80ms); }
+.deck.dealing .tcard-in { transition: transform .8s var(--ease) calc(350ms + var(--i) * 130ms); }
+.deck-dots { display: flex; justify-content: center; gap: 8px; }
+.deck-dots button { width: 7px; height: 7px; padding: 0; border: 0; border-radius: 50%; cursor: pointer; background: rgba(255, 255, 255, .22); transition: background .3s, transform .3s; }
+.deck-dots button.on { background: var(--gold); transform: scale(1.3); }
+.deck-hint { margin: 14px 0 0; text-align: center; font-size: 13px; color: var(--dim); letter-spacing: .04em; }
+.fan-only { display: none; }
+@media (min-width: 900px) and (hover: hover) {
+  .deck { margin: 0; padding: 100px 0 56px; gap: 0; overflow: visible; justify-content: center; scroll-snap-type: none; }
+  .tcard {
+    flex: 0 0 250px; margin: 0 -28px; transform-origin: 50% 100%;
+    transform: translateX(var(--push, 0px)) translateY(calc(var(--d) * var(--d) * 9px)) rotate(calc(var(--d) * 6deg));
+    transition: transform .5s var(--ease), opacity .5s;
+  }
+  .tcard:hover, .tcard:focus-visible { z-index: 5; transform: translateY(-34px) scale(1.16); }
+  .tcard-in { transition: transform .6s var(--ease); }
+  .deck.stacked .tcard { transform: translateX(calc(var(--d) * -194px)) translateY(50px) rotate(calc(var(--d) * 2deg)); }
+  .deck-dots, .swipe-only { display: none; }
+  .fan-only { display: inline; }
 }
 .zoom-hint {
   position: absolute; z-index: 2; right: 12px; top: 12px; width: 34px; height: 34px; border-radius: 50%;
@@ -635,27 +704,44 @@ section.chapter { padding: 88px 0 24px; scroll-margin-top: calc(var(--head) - 40
           <figcaption><b><span class="zh">插画 07</span><span class="en">Illustration 07</span></b></figcaption>
         </figure>
       </div>
-      <div class="gallery tall">
-        <figure class="card shot reveal" role="button" tabindex="0" data-full="media/img/illustration-8.jpg" data-cap-zh="插画 08" data-cap-en="Illustration 08">
-          <div class="media"><img src="media/img/illustration-8-sm.jpg" width="720" height="960" alt="插画：金角少年与鎏金龙影 / Illustration: a golden-horned youth and the shadow of a gilded dragon" loading="lazy"><span class="zoom-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></div>
-          <figcaption><b><span class="zh">插画 08</span><span class="en">Illustration 08</span></b></figcaption>
-        </figure>
-        <figure class="card shot reveal" role="button" tabindex="0" data-full="media/img/illustration-9.jpg" data-cap-zh="插画 09" data-cap-en="Illustration 09">
-          <div class="media"><img src="media/img/illustration-9-sm.jpg" width="720" height="1010" alt="插画：琥珀之眸映金镜 / Illustration: amber eyes reflected in a golden mirror" loading="lazy"><span class="zoom-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></div>
-          <figcaption><b><span class="zh">插画 09</span><span class="en">Illustration 09</span></b></figcaption>
-        </figure>
-        <figure class="card shot reveal" role="button" tabindex="0" data-full="media/img/illustration-10.jpg" data-cap-zh="插画 10" data-cap-en="Illustration 10">
-          <div class="media"><img src="media/img/illustration-10-sm.jpg" width="720" height="960" alt="插画：月门庭院里的金眸狐影 / Illustration: a golden-eyed fox spirit in a moon-gate courtyard" loading="lazy"><span class="zoom-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></div>
-          <figcaption><b><span class="zh">插画 10</span><span class="en">Illustration 10</span></b></figcaption>
-        </figure>
-        <figure class="card shot reveal" role="button" tabindex="0" data-full="media/img/illustration-11.jpg" data-cap-zh="插画 11" data-cap-en="Illustration 11">
-          <div class="media"><img src="media/img/illustration-11-sm.jpg" width="720" height="960" alt="插画：金角少女与光球 / Illustration: a golden-horned girl and an orb of light" loading="lazy"><span class="zoom-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></div>
-          <figcaption><b><span class="zh">插画 11</span><span class="en">Illustration 11</span></b></figcaption>
-        </figure>
-        <figure class="card shot reveal" role="button" tabindex="0" data-full="media/img/illustration-12.jpg" data-cap-zh="插画 12" data-cap-en="Illustration 12">
-          <div class="media"><img src="media/img/illustration-12-sm.jpg" width="720" height="960" alt="插画：金台夕照，雪后红墙前的人物 / Illustration: sunset on the golden terrace, a figure before a red wall after snow" loading="lazy"><span class="zoom-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></div>
-          <figcaption><b><span class="zh">插画 12</span><span class="en">Illustration 12</span></b></figcaption>
-        </figure>
+      <div class="deck-wrap">
+        <div class="deck" id="deck">
+          <figure class="tcard" role="button" tabindex="0" style="--i: 0; --d: -2" data-full="media/img/illustration-8.jpg" data-cap-zh="插画 08" data-cap-en="Illustration 08">
+            <div class="tcard-in">
+              <div class="tcard-face"><img src="media/img/illustration-8-sm.jpg" width="720" height="960" alt="插画：金角少年与鎏金龙影 / Illustration: a golden-horned youth and the shadow of a gilded dragon" loading="lazy"><span class="holo" aria-hidden="true"></span><span class="plate"><span class="zh">插画 08</span><span class="en">Illustration 08</span></span></div>
+              <div class="tcard-back" aria-hidden="true"><span>源</span></div>
+            </div>
+          </figure>
+          <figure class="tcard" role="button" tabindex="0" style="--i: 1; --d: -1" data-full="media/img/illustration-9.jpg" data-cap-zh="插画 09" data-cap-en="Illustration 09">
+            <div class="tcard-in">
+              <div class="tcard-face"><img src="media/img/illustration-9-sm.jpg" width="720" height="1010" alt="插画：琥珀之眸映金镜 / Illustration: amber eyes reflected in a golden mirror" loading="lazy"><span class="holo" aria-hidden="true"></span><span class="plate"><span class="zh">插画 09</span><span class="en">Illustration 09</span></span></div>
+              <div class="tcard-back" aria-hidden="true"><span>源</span></div>
+            </div>
+          </figure>
+          <figure class="tcard" role="button" tabindex="0" style="--i: 2; --d: 0" data-full="media/img/illustration-10.jpg" data-cap-zh="插画 10" data-cap-en="Illustration 10">
+            <div class="tcard-in">
+              <div class="tcard-face"><img src="media/img/illustration-10-sm.jpg" width="720" height="960" alt="插画：月门庭院里的金眸狐影 / Illustration: a golden-eyed fox spirit in a moon-gate courtyard" loading="lazy"><span class="holo" aria-hidden="true"></span><span class="plate"><span class="zh">插画 10</span><span class="en">Illustration 10</span></span></div>
+              <div class="tcard-back" aria-hidden="true"><span>源</span></div>
+            </div>
+          </figure>
+          <figure class="tcard" role="button" tabindex="0" style="--i: 3; --d: 1" data-full="media/img/illustration-11.jpg" data-cap-zh="插画 11" data-cap-en="Illustration 11">
+            <div class="tcard-in">
+              <div class="tcard-face"><img src="media/img/illustration-11-sm.jpg" width="720" height="960" alt="插画：金角少女与光球 / Illustration: a golden-horned girl and an orb of light" loading="lazy"><span class="holo" aria-hidden="true"></span><span class="plate"><span class="zh">插画 11</span><span class="en">Illustration 11</span></span></div>
+              <div class="tcard-back" aria-hidden="true"><span>源</span></div>
+            </div>
+          </figure>
+          <figure class="tcard" role="button" tabindex="0" style="--i: 4; --d: 2" data-full="media/img/illustration-12.jpg" data-cap-zh="插画 12" data-cap-en="Illustration 12">
+            <div class="tcard-in">
+              <div class="tcard-face"><img src="media/img/illustration-12-sm.jpg" width="720" height="960" alt="插画：金台夕照，雪后红墙前的人物 / Illustration: sunset on the golden terrace, a figure before a red wall after snow" loading="lazy"><span class="holo" aria-hidden="true"></span><span class="plate"><span class="zh">插画 12</span><span class="en">Illustration 12</span></span></div>
+              <div class="tcard-back" aria-hidden="true"><span>源</span></div>
+            </div>
+          </figure>
+        </div>
+        <div class="deck-dots" id="deckDots" aria-hidden="true"></div>
+        <p class="deck-hint">
+          <span class="zh"><span class="fan-only">鼠标移到卡牌上翻看，点击查看大图</span><span class="swipe-only">左右滑动翻看卡牌，点击查看大图</span></span>
+          <span class="en"><span class="fan-only">Hover over a card to inspect it · click for full view</span><span class="swipe-only">Swipe through the cards · tap for full view</span></span>
+        </p>
       </div>
     </div>
   </section>
@@ -1111,6 +1197,91 @@ section.chapter { padding: 88px 0 24px; scroll-margin-top: calc(var(--head) - 40
   window.addEventListener('resize', function () { if (openOverlay === lb) resetZoom(); });
 
   $$('.card[data-full]').forEach(function (c) { c.addEventListener('click', function () { lbOpen(c.dataset.full); }); });
+
+  /* ---------- portrait card deck ---------- */
+  var deck = $('#deck'), tcards = $$('.tcard', deck), deckDots = $('#deckDots');
+  var fanMQ = window.matchMedia('(min-width: 900px) and (hover: hover)');
+  function setVars(c, v) { for (var k in v) c.style.setProperty(k, v[k]); }
+  function setPush(a) {
+    tcards.forEach(function (c, j) { c.style.setProperty('--push', a < 0 || j === a ? '0px' : (j < a ? -34 : 34) + 'px'); });
+  }
+  // carousel: offset of each card from the centre, in card widths
+  function offsetOf(c) {
+    return (c.offsetLeft + c.offsetWidth / 2 - deck.scrollLeft - deck.clientWidth / 2) / (c.offsetWidth + 14);
+  }
+  function centre(c) { deck.scrollTo({ left: c.offsetLeft + c.offsetWidth / 2 - deck.clientWidth / 2, behavior: 'smooth' }); }
+  function flow() {
+    if (fanMQ.matches) return;
+    var best = 0, bestD = Infinity;
+    tcards.forEach(function (c, i) {
+      var o = offsetOf(c), a = Math.min(Math.abs(o), 1);
+      setVars(c, {
+        '--ry': (Math.max(-1, Math.min(1, o)) * -26).toFixed(1) + 'deg',
+        '--s': (1 - a * 0.14).toFixed(3),
+        // foil sheen sweeps across as a card slides into the centre, then settles
+        '--gx': (50 + o * 70).toFixed(1) + '%',
+        '--ho': Math.max(0, 0.85 - Math.abs(a - 0.3) * 2.6).toFixed(2)
+      });
+      if (Math.abs(o) < bestD) { bestD = Math.abs(o); best = i; }
+    });
+    $$('button', deckDots).forEach(function (d, j) { d.classList.toggle('on', j === best); });
+  }
+  function layout() {
+    tcards.forEach(function (c) { setVars(c, { '--ry': '0deg', '--rx': '0deg', '--s': '1', '--ho': '0', '--push': '0px' }); });
+    flow();
+  }
+  tcards.forEach(function (c, i) {
+    var d = document.createElement('button');
+    d.type = 'button'; d.tabIndex = -1;
+    d.addEventListener('click', function () { centre(c); });
+    deckDots.appendChild(d);
+
+    c.addEventListener('pointerenter', function () { if (fanMQ.matches) setPush(i); });
+    c.addEventListener('focus', function () { if (fanMQ.matches) setPush(i); });
+    c.addEventListener('blur', function () { setPush(-1); });
+    c.addEventListener('pointermove', function (e) {
+      if (!fanMQ.matches || reduceMotion) return;
+      var r = c.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      c.classList.add('tilting');
+      setVars(c, {
+        '--ry': ((x - 0.5) * 24).toFixed(2) + 'deg', '--rx': ((0.5 - y) * 20).toFixed(2) + 'deg',
+        '--gx': (x * 100).toFixed(1) + '%', '--gy': (y * 100).toFixed(1) + '%', '--ho': '1'
+      });
+    });
+    c.addEventListener('pointerleave', function () {
+      if (!fanMQ.matches) return;
+      c.classList.remove('tilting');
+      setVars(c, { '--ry': '0deg', '--rx': '0deg', '--ho': '0' });
+    });
+    c.addEventListener('click', function () {
+      // in the carousel, a tap on a side card brings it to the centre first
+      if (!fanMQ.matches && Math.abs(offsetOf(c)) > 0.35) { centre(c); return; }
+      lbOpen(c.dataset.full);
+    });
+  });
+  deck.addEventListener('pointerleave', function () { setPush(-1); });
+  var flowTick = false;
+  deck.addEventListener('scroll', function () {
+    if (!flowTick) { flowTick = true; requestAnimationFrame(function () { flowTick = false; flow(); }); }
+  }, { passive: true });
+  window.addEventListener('resize', flow);
+  if (fanMQ.addEventListener) fanMQ.addEventListener('change', layout); else if (fanMQ.addListener) fanMQ.addListener(layout);
+  layout();
+
+  // deal the cards face down, then fan them out and flip them once the deck scrolls into view
+  if ('IntersectionObserver' in window && !reduceMotion) {
+    deck.classList.add('stacked');
+    var dealIO = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) return;
+      dealIO.disconnect();
+      deck.classList.add('dealing');
+      void deck.offsetWidth;
+      deck.classList.remove('stacked');
+      setTimeout(function () { deck.classList.remove('dealing'); }, 2000);
+    }, { threshold: 0.3 });
+    dealIO.observe(deck);
+  }
 
   /* scene: render / process switch */
   var scene = $('#sceneCard'), sceneImgs = $$('.stack > img', scene), sceneBtns = $$('.seg button', scene);
